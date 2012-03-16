@@ -8,6 +8,8 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{A thin wrapper of Read It Later Text API}
   gem.homepage      = "https://github.com/tomykaira/ril_text"
 
+  gem.add_development_dependency('rspec')
+
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
