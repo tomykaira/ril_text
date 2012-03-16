@@ -1,6 +1,8 @@
 # RilText
 
-TODO: Write a gem description
+This is a thin wrapper of [Read It Later Text API](http://readitlaterlist.com/api/docs/).
+
+At first, you should get [your API key](http://readitlaterlist.com/api/signup/).
 
 ## Installation
 
