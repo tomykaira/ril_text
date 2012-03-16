@@ -20,7 +20,25 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    require 'ril_text'
+    RilText.get('http://readitlaterlist.com/api/docs')
+
+will return a hash.  The hash contains following fields.
+
+- `text`: Extracted body of the document.
+- `title`: Title of the document.
+- `resolved`: Resolved URL.  RIL Text API follows redirect chain until it gets 200.
+- `image`: Favicon of the document.
+
+## Coniguration
+
+Set `apikey` using `RilText.configure` before use.
+
+    RilText.configure do |c|
+      c.apikey = 'yourapikey'
+      c.images = 1
+      c.mode = 'more'
+    end
 
 ## Contributing
 
