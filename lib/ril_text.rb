@@ -13,12 +13,12 @@ module RilText
     https.use_ssl = true
     https.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-    p path = "/#{API_VERSION}/text"
+    params = { :apikey => 'yourapikey', :url => url }
 
     result = Hash.new
 
     https.start do |access|
-      response = access.get("/v2/text?apikey=yourapikey&url=http://readitlaterlist.com/api/docs")
+      response = access.get(request_uri(params))
       result[:text] = response.body
       response.each_header do |k, v|
         case k
@@ -33,5 +33,11 @@ module RilText
     end
 
     result
+  end
+
+  private
+  def request_uri(params)
+    query_string = params.map{ |k, v| "#{URI.escape(k.to_s)}=#{URI.escape(v.to_s)}" }.join('&')
+    "/#{API_VERSION}/text" + '?' + query_string
   end
 end
